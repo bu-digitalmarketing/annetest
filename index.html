@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anne Montira</title>
+<meta name="description" content="เว็บไซต์โปรไฟล์ส่วนตัวของ Anne Montira">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --v:#7c5cff; --p:#ff4ecd; --c:#22e3ff; --l:#c3ff3d; --o:#ff8a3d;
+  --bg:#f6f3ff; --ink:#120f1c; --dim:#5d5570;
+  --glass:rgba(255,255,255,.62); --glass-line:rgba(18,15,28,.10);
+  --blob:.55; --grain:.22;
+  --r:26px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#09060f; --ink:#f2edff; --dim:#a79cc4;
+    --glass:rgba(255,255,255,.055); --glass-line:rgba(255,255,255,.11);
+    --blob:.42; --grain:.30;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#09060f; --ink:#f2edff; --dim:#a79cc4;
+  --glass:rgba(255,255,255,.055); --glass-line:rgba(255,255,255,.11);
+  --blob:.42; --grain:.30;
+}
+:root[data-theme="light"]{
+  --bg:#f6f3ff; --ink:#120f1c; --dim:#5d5570;
+  --glass:rgba(255,255,255,.62); --glass-line:rgba(18,15,28,.10);
+  --blob:.55; --grain:.22;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:'Anuphan',system-ui,-apple-system,sans-serif;
+  font-size:16px; line-height:1.75; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* ---- gradient mesh background ---- */
+.mesh{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:var(--blob)}
+.b1{width:56vw;height:56vw;background:var(--v);top:-18vw;left:-12vw;animation:f1 22s ease-in-out infinite}
+.b2{width:48vw;height:48vw;background:var(--p);top:22vw;right:-16vw;animation:f2 26s ease-in-out infinite}
+.b3{width:44vw;height:44vw;background:var(--c);top:92vw;left:-10vw;animation:f1 30s ease-in-out infinite reverse}
+.b4{width:40vw;height:40vw;background:var(--l);top:150vw;right:-8vw;animation:f2 24s ease-in-out infinite}
+@keyframes f1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8vw,6vw) scale(1.18)}}
+@keyframes f2{0%,100%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-7vw,8vw) scale(.9)}}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--grain);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap{max-width:1020px;margin:0 auto;padding:0 16px;position:relative;z-index:2}
+
+/* ---- nav ---- */
+.nav{position:sticky;top:14px;z-index:60;padding:0 16px;margin-bottom:-58px}
+.nav-in{
+  max-width:1020px;margin:0 auto;height:58px;display:flex;align-items:center;gap:6px;
+  background:var(--glass);border:1px solid var(--glass-line);
+  backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);
+  border-radius:99px;padding:0 10px 0 20px;
+}
+.brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.02em}
+.brand i{color:var(--p);font-style:normal}
+.nav-links{margin-left:auto;display:flex;gap:2px;align-items:center}
+.nav-links a{
+  text-decoration:none;font-size:.88rem;font-weight:500;color:var(--dim);
+  padding:8px 13px;border-radius:99px;transition:.2s;
+}
+.nav-links a:hover{color:var(--ink);background:var(--glass-line)}
+.tbtn{
+  border:1px solid var(--glass-line);background:transparent;color:var(--ink);
+  width:36px;height:36px;border-radius:99px;cursor:pointer;font-size:1rem;flex:none;
+  display:grid;place-items:center;transition:.2s;
+}
+.tbtn:hover{background:var(--glass-line);transform:rotate(-20deg)}
+@media(max-width:680px){.nav-links a{display:none}}
+
+/* ---- hero ---- */
+.hero{padding:120px 0 40px}
+.hero-grid{display:grid;grid-template-columns:auto 1fr;gap:38px;align-items:center}
+.ava-wrap{position:relative;width:176px;flex:none}
+.ava{
+  width:176px;aspect-ratio:1;border-radius:38% 62% 58% 42%/45% 40% 60% 55%;
+  overflow:hidden;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--v),var(--p) 55%,var(--o));
+  animation:morph 12s ease-in-out infinite;
+  box-shadow:0 18px 60px -18px var(--p);
+}
+@keyframes morph{
+  0%,100%{border-radius:38% 62% 58% 42%/45% 40% 60% 55%}
+  50%{border-radius:60% 40% 35% 65%/55% 62% 38% 45%}
+}
+.ava img{width:100%;height:100%;object-fit:cover}
+.ava .ph{font-family:'Space Grotesk',sans-serif;font-size:4.2rem;font-weight:700;color:#fff;mix-blend-mode:overlay}
+.sticker{
+  position:absolute;font-size:.72rem;font-weight:600;padding:5px 13px;border-radius:99px;
+  color:#0b0812;white-space:nowrap;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);
+}
+.s1{background:var(--l);top:-6px;right:-30px;transform:rotate(9deg);animation:bob 4s ease-in-out infinite}
+.s2{background:var(--c);bottom:8px;left:-34px;transform:rotate(-8deg);animation:bob 5s ease-in-out infinite .6s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--rot,0deg))}50%{transform:translateY(-8px) rotate(var(--rot,0deg))}}
+.s1{--rot:9deg} .s2{--rot:-8deg}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:7px;font-size:.74rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+  border:1px solid var(--glass-line);background:var(--glass);
+  padding:6px 15px;border-radius:99px;margin-bottom:16px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--l);box-shadow:0 0 12px var(--l)}
+h1{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.045em;line-height:.95;
+  font-size:clamp(2.9rem,9vw,5.2rem);
+  background:linear-gradient(100deg,var(--v),var(--p) 38%,var(--o) 62%,var(--c));
+  background-size:280% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shift 9s ease infinite;margin-bottom:14px;
+}
+@keyframes shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.sub{color:var(--dim);font-size:1.08rem;max-width:46ch}
+.cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px}
+.btn{
+  text-decoration:none;font-size:.92rem;font-weight:600;padding:12px 26px;border-radius:99px;
+  transition:transform .18s cubic-bezier(.34,1.7,.64,1),box-shadow .18s;border:1px solid transparent;
+}
+.btn-1{background:linear-gradient(100deg,var(--v),var(--p));color:#fff;box-shadow:0 10px 30px -10px var(--p)}
+.btn-2{border-color:var(--glass-line);background:var(--glass);color:var(--ink);backdrop-filter:blur(12px)}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.btn-1:hover{box-shadow:0 16px 40px -10px var(--p)}
+@media(max-width:760px){
+  .hero{padding:104px 0 28px}
+  .hero-grid{grid-template-columns:1fr;gap:30px;justify-items:center;text-align:center}
+  .ava-wrap,.ava{width:150px}
+  .sub{margin:0 auto}
+  .cta{justify-content:center}
+}
+
+/* ---- marquee ---- */
+.marq{
+  overflow:hidden;margin:34px 0;padding:13px 0;position:relative;z-index:2;
+  border-top:1px solid var(--glass-line);border-bottom:1px solid var(--glass-line);
+  background:var(--glass);backdrop-filter:blur(12px);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.marq-track{display:flex;gap:26px;width:max-content;animation:run 26s linear infinite}
+.marq:hover .marq-track{animation-play-state:paused}
+@keyframes run{to{transform:translateX(-50%)}}
+.marq span{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:.92rem;color:var(--dim);white-space:nowrap}
+.marq span b{color:var(--p)}
+
+/* ---- sections ---- */
+section{padding:54px 0}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:26px;flex-wrap:wrap}
+.sec-head h2{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.035em;
+  font-size:clamp(1.7rem,4.6vw,2.4rem);line-height:1.1;
+}
+.tag{
+  font-family:'Space Grotesk',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 12px;border-radius:99px;color:#0b0812;background:var(--l);
+}
+.tag.pk{background:var(--p);color:#fff} .tag.cy{background:var(--c)} .tag.vi{background:var(--v);color:#fff}
+
+.glass{
+  background:var(--glass);border:1px solid var(--glass-line);border-radius:var(--r);
+  backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);
+}
+.prose{padding:30px}
+.prose p{color:var(--dim);max-width:70ch;margin-bottom:13px;font-size:1.02rem}
+.prose p:last-child{margin-bottom:0}
+.prose strong{color:var(--ink);font-weight:600}
+
+/* ---- bento ---- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.cell{padding:24px;position:relative;overflow:hidden;grid-column:span 2;transition:transform .25s cubic-bezier(.34,1.5,.64,1)}
+.cell:nth-child(1){grid-column:span 4}
+.cell:nth-child(4){grid-column:span 3}
+.cell:nth-child(5){grid-column:span 3}
+.cell:hover{transform:translateY(-5px)}
+.cell::before{
+  content:"";position:absolute;inset:0;opacity:0;transition:.3s;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),var(--glow,var(--v)),transparent 62%);
+}
+.cell:hover::before{opacity:.16}
+.cell .ico{font-size:1.7rem;display:block;margin-bottom:12px;position:relative}
+.cell h3{font-size:1.1rem;font-weight:600;margin-bottom:5px;position:relative}
+.cell p{font-size:.92rem;color:var(--dim);line-height:1.65;position:relative}
+@media(max-width:760px){
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .cell,.cell:nth-child(1),.cell:nth-child(4),.cell:nth-child(5){grid-column:span 1}
+}
+
+/* ---- journey ---- */
+.tl{display:grid;gap:12px}
+.tl-item{padding:22px 26px;display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:start;transition:.25s}
+.tl-item:hover{transform:translateX(6px)}
+.when{
+  font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.04em;
+  color:#0b0812;background:var(--c);padding:4px 12px;border-radius:99px;justify-self:start;
+}
+.tl-item:nth-child(2n) .when{background:var(--l)}
+.tl-item:nth-child(3n) .when{background:var(--o)}
+.tl-item h3{font-size:1.08rem;font-weight:600;margin-bottom:3px}
+.tl-item p{font-size:.92rem;color:var(--dim)}
+@media(max-width:640px){.tl-item{grid-template-columns:1fr;gap:9px}}
+
+/* ---- gallery ---- */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gal figure{
+  aspect-ratio:1;border-radius:20px;overflow:hidden;display:grid;place-items:center;
+  background:var(--glass);border:1px solid var(--glass-line);
+  transition:transform .3s cubic-bezier(.34,1.6,.64,1);
+}
+.gal figure:nth-child(3n){aspect-ratio:1/1.25}
+.gal figure:hover{transform:scale(1.04) rotate(-1.5deg)}
+.gal img{width:100%;height:100%;object-fit:cover}
+.gal .cap{font-size:.76rem;color:var(--dim);padding:12px;text-align:center;line-height:1.55}
+@media(max-width:700px){.gal{grid-template-columns:repeat(2,1fr)}}
+
+/* ---- contact ---- */
+.links{display:flex;flex-wrap:wrap;gap:11px;margin-top:20px}
+.link{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:500;
+  background:var(--glass);border:1px solid var(--glass-line);border-radius:99px;
+  padding:11px 22px;font-size:.93rem;color:var(--ink);backdrop-filter:blur(12px);
+  transition:transform .18s cubic-bezier(.34,1.7,.64,1),border-color .2s,box-shadow .2s;
+}
+.link:hover{transform:translateY(-4px) rotate(-1.5deg);border-color:var(--p);box-shadow:0 12px 30px -12px var(--p)}
+
+footer{padding:40px 0 56px;text-align:center;position:relative;z-index:2}
+footer p{font-size:.84rem;color:var(--dim)}
+footer .big{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.04em;
+  font-size:clamp(2.6rem,13vw,7rem);line-height:1;opacity:.10;margin-bottom:14px;user-select:none;
+}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px)}
+.rv.in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none}
+  .blob,.ava,h1,.marq-track,.sticker{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="mesh"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+
+<nav class="nav"><div class="nav-in">
+  <span class="brand" id="brand"></span>
+  <div class="nav-links">
+    <a href="#about">เกี่ยวกับ</a>
+    <a href="#interests">ความสนใจ</a>
+    <a href="#journey">เส้นทาง</a>
+    <a href="#gallery">แกลเลอรี</a>
+    <a href="#contact">ติดต่อ</a>
+    <button class="tbtn" id="theme" aria-label="สลับธีมสว่าง/มืด">🌙</button>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap hero-grid">
+  <div class="ava-wrap">
+    <div class="ava" id="ava"></div>
+    <span class="sticker s1" id="stick1"></span>
+    <span class="sticker s2" id="stick2"></span>
+  </div>
+  <div>
+    <span class="eyebrow"><span class="dot"></span><span id="eyebrow"></span></span>
+    <h1 id="name"></h1>
+    <p class="sub" id="tagline"></p>
+    <div class="cta">
+      <a class="btn btn-1" href="#contact">ทักมาคุยกัน ✦</a>
+      <a class="btn btn-2" href="#about">รู้จักฉันเพิ่ม</a>
+    </div>
+  </div>
+</div></header>
+
+<div class="marq"><div class="marq-track" id="marq"></div></div>
+
+<main>
+  <section id="about" class="rv"><div class="wrap">
+    <div class="sec-head"><h2>เกี่ยวกับฉัน</h2><span class="tag">About</span></div>
+    <div class="glass prose" id="about-body"></div>
+  </div></section>
+
+  <section id="interests" class="rv"><div class="wrap">
+    <div class="sec-head"><h2>สิ่งที่ฉันอิน</h2><span class="tag pk">Interests</span></div>
+    <div class="bento" id="bento"></div>
+  </div></section>
+
+  <section id="journey" class="rv"><div class="wrap">
+    <div class="sec-head"><h2>เส้นทางของฉัน</h2><span class="tag cy">Journey</span></div>
+    <div class="tl" id="timeline"></div>
+  </div></section>
+
+  <section id="gallery" class="rv"><div class="wrap">
+    <div class="sec-head"><h2>แกลเลอรี</h2><span class="tag vi">Gallery</span></div>
+    <div class="gal" id="gal"></div>
+  </div></section>
+
+  <section id="contact" class="rv"><div class="wrap">
+    <div class="sec-head"><h2>ติดต่อ</h2><span class="tag">Contact</span></div>
+    <div class="glass prose"><p id="contact-note"></p><div class="links" id="links"></div></div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="big" id="foot-big"></div>
+  <p id="footer-text"></p>
+</div></footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   แก้ข้อมูลทั้งหมดได้ที่นี่ที่เดียว
+   ═══════════════════════════════════════════════════════════ */
+const PROFILE = {
+  name: "Anne Montira",
+  brand: "anne<i>.</i>",
+  eyebrow: "ว่างอยู่ ทักได้",
+  tagline: "ยินดีต้อนรับสู่มุมเล็ก ๆ ของฉันบนอินเทอร์เน็ต — ที่เก็บเรื่องราว ความสนใจ และโมเมนต์ที่อยากจำไว้",
+  stickers: ["✦ Bangkok", "🎧 always on"],
+
+  // ใส่ path รูป เช่น "photo.jpg" หรือปล่อยว่างเพื่อใช้ตัวอักษรแทน
+  photo: "",
+
+  // แถบข้อความวิ่ง
+  ticker: ["ยินดีที่ได้รู้จัก", "coffee first ☕", "ชอบเที่ยว ชอบถ่ายรูป", "always learning", "good vibes only ✦", "เปิดรับโอกาสใหม่ ๆ"],
+
+  about: [
+    "สวัสดีค่ะ ฉันชื่อ <strong>มนธิรา</strong> (Anne) — หน้านี้คือพื้นที่ที่ฉันใช้เก็บเรื่องราวและสิ่งที่สนใจไว้ในที่เดียว",
+    "<em>[ใส่ย่อหน้าแนะนำตัวตรงนี้ — ทำงานอะไร อยู่ที่ไหน สนใจเรื่องอะไรเป็นพิเศษ]</em>",
+    "<em>[ใส่ย่อหน้าที่สอง — เป้าหมาย สิ่งที่กำลังทำอยู่ หรืออะไรที่อยากให้คนที่แวะเข้ามารู้จัก]</em>"
+  ],
+
+  interests: [
+    { ico:"✈️", title:"การเดินทาง", text:"[เล่าถึงที่ที่เคยไป หรือที่ที่อยากไป]", glow:"#7c5cff" },
+    { ico:"📷", title:"ถ่ายภาพ",    text:"[แนวภาพที่ชอบถ่าย กล้องที่ใช้]",      glow:"#ff4ecd" },
+    { ico:"☕", title:"คาเฟ่",      text:"[ร้านโปรด เครื่องดื่มที่ชอบ]",        glow:"#ff8a3d" },
+    { ico:"🎵", title:"ดนตรี",      text:"[แนวเพลง ศิลปินที่ฟังบ่อย]",          glow:"#22e3ff" },
+    { ico:"📚", title:"การอ่าน",    text:"[หนังสือหรือหัวข้อที่สนใจ]",          glow:"#c3ff3d" },
+    { ico:"🍳", title:"ทำอาหาร",    text:"[เมนูถนัด หรืออาหารที่ชอบ]",          glow:"#7c5cff" }
+  ],
+
+  journey: [
+    { when:"ตอนนี้",   title:"[ตำแหน่ง / สิ่งที่ทำอยู่]", text:"[รายละเอียดสั้น ๆ]" },
+    { when:"25xx–25xx", title:"[งาน / โปรเจกต์ก่อนหน้า]",  text:"[รายละเอียดสั้น ๆ]" },
+    { when:"25xx",      title:"[การศึกษา]",                text:"[สถาบัน / สาขา]" }
+  ],
+
+  // ใส่ path รูปใน images[] เช่น ["p1.jpg","p2.jpg"] — ถ้าว่างจะแสดงเป็นกรอบเปล่า
+  gallery: { images: [], placeholders: 6, note:"[วางรูปไว้โฟลเดอร์เดียวกับไฟล์นี้ แล้วใส่ชื่อไฟล์ใน images]" },
+
+  contactNote: "อยากทักทาย ชวนคุย หรือติดต่อเรื่องงาน — ทิ้งข้อความไว้ได้เลยค่ะ",
+  links: [
+    { ico:"📘", label:"Facebook",  url:"https://www.facebook.com/montira.anne" },
+    { ico:"✉️", label:"อีเมล",     url:"mailto:[อีเมลของคุณ]" },
+    { ico:"📸", label:"Instagram", url:"#" },
+    { ico:"💼", label:"LinkedIn",  url:"#" }
+  ]
+};
+/* ═══════════════════════════════════════════════════════════ */
+
+const $ = s => document.querySelector(s);
+
+$("#brand").innerHTML   = PROFILE.brand;
+$("#eyebrow").textContent = PROFILE.eyebrow;
+$("#name").textContent  = PROFILE.name;
+$("#tagline").textContent = PROFILE.tagline;
+$("#stick1").textContent = PROFILE.stickers[0] || "";
+$("#stick2").textContent = PROFILE.stickers[1] || "";
+document.title = PROFILE.name;
+
+$("#ava").innerHTML = PROFILE.photo
+  ? `<img src="${PROFILE.photo}" alt="รูปโปรไฟล์ของ ${PROFILE.name}">`
+  : `<span class="ph">${PROFILE.name.trim().charAt(0)}</span>`;
+
+const row = PROFILE.ticker.map(t => `<span>${t}<b> ✦ </b></span>`).join("");
+$("#marq").innerHTML = row + row;   // ทำซ้ำเพื่อให้วิ่งต่อเนื่องไร้รอยต่อ
+
+$("#about-body").innerHTML = PROFILE.about.map(p => `<p>${p}</p>`).join("");
+
+$("#bento").innerHTML = PROFILE.interests.map(i => `
+  <article class="cell glass" style="--glow:${i.glow}">
+    <span class="ico">${i.ico}</span>
+    <h3>${i.title}</h3>
+    <p>${i.text}</p>
+  </article>`).join("");
+
+$("#timeline").innerHTML = PROFILE.journey.map(j => `
+  <div class="tl-item glass">
+    <span class="when">${j.when}</span>
+    <div><h3>${j.title}</h3><p>${j.text}</p></div>
+  </div>`).join("");
+
+const g = PROFILE.gallery;
+$("#gal").innerHTML = g.images.length
+  ? g.images.map(src => `<figure><img src="${src}" alt=""></figure>`).join("")
+  : Array.from({length:g.placeholders}, () => `<figure><span class="cap">${g.note}</span></figure>`).join("");
+
+$("#contact-note").textContent = PROFILE.contactNote;
+$("#links").innerHTML = PROFILE.links.map(l =>
+  `<a class="link" href="${l.url}" target="_blank" rel="noopener"><span>${l.ico}</span>${l.label}</a>`).join("");
+
+$("#foot-big").textContent  = PROFILE.name;
+$("#footer-text").textContent = `© ${new Date().getFullYear()} ${PROFILE.name}`;
+
+/* ธีมสว่าง/มืด — เริ่มที่มืด */
+const tbtn = $("#theme");
+const paint = t => tbtn.textContent = (t === "light" ? "☀️" : "🌙");
+try {
+  const saved = localStorage.getItem("theme");
+  if (saved) document.documentElement.setAttribute("data-theme", saved);
+} catch {}
+paint(document.documentElement.getAttribute("data-theme"));
+tbtn.addEventListener("click", () => {
+  const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+  document.documentElement.setAttribute("data-theme", next);
+  paint(next);
+  try { localStorage.setItem("theme", next); } catch {}
+});
+
+/* แสงตามเมาส์บนการ์ด */
+document.querySelectorAll(".cell").forEach(el => {
+  el.addEventListener("pointermove", e => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+    el.style.setProperty("--my", (e.clientY - r.top) + "px");
+  });
+});
+
+/* ค่อย ๆ ปรากฏเมื่อเลื่อนถึง */
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+}, { threshold:.1 });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
